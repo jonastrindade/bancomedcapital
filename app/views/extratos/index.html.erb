@@ -23,7 +23,7 @@
       <div class="card border-success mb-3 h-100">
         <div class="card-header">Depositar</div>
         <div class="card-body text-success">
-        <%= form_for @extrato_entrada, url: { action: "create" }, class: "form-control" do |f| %>
+        <%= form_for @extrato_entrada, url: { action: "create" }, remote: true, class: "form-control" do |f| %>
           <div class="form-group">
             <%= f.text_field :valor, class: "form-control" %>
             <%= f.hidden_field :tipo_lancamento, value: true %>
@@ -38,7 +38,7 @@
       <div class="card border-danger mb-3  h-100">
         <div class="card-header">Retirar</div>
         <div class="card-body text-danger">
-        <%= form_for @extrato_retirada, url: { action: "create" }, class: "form-control" do |f| %>
+        <%= form_for @extrato_retirada, url: { action: "create" }, remote: true, class: "form-control" do |f| %>
           <div class="form-group">
             <%= f.text_field :valor, class: "form-control" %>
             <%= f.hidden_field :tipo_lancamento, value: false %>
@@ -54,7 +54,7 @@
 
 <div class="container mt-3">
   <h3>Extrato</h3>
-  <table class="table">
+  <table class="table" id="teste">
     <thead>
       <tr>
         <th>Valor</th>
@@ -64,13 +64,7 @@
     </thead>
   
     <tbody>
-      <% @extratos.each do |extratos| %>
-        <tr>
-          <td><%= extratos.valor %></td>
-          <td><%= extratos.tipo_lancamento ? "Entrada" : "Retirada" %></td>
-          <td><%= extratos.created_at.strftime("%d/%m/%Y às %I:%M%p") %></td>
-        </tr>
-      <% end %>
+      <%= render @extratos %>
     </tbody>
 
   </table>

@@ -1,0 +1,5 @@
+<tr>
+  <td><%= extrato.valor %></td>
+  <td><%= extrato.tipo_lancamento ? "Entrada" : "Retirada" %></td>
+  <td><%= extrato.created_at.strftime("%d/%m/%Y às %I:%M%p") %></td>
+</tr>
