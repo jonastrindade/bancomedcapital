@@ -1,6 +1,11 @@
 class ExtratosController < ApplicationController
   def index
-    @extratos = Extrato.all.order :created_at
+    @user = current_user
+    @saldo = current_user.saldo
+    @balanco = Extrato.calcular_balanço current_user
+    @extrato_entrada = Extrato.new
+    @extrato_retirada = Extrato.new
+    @extratos = Extrato.all.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def new
@@ -9,7 +14,12 @@ class ExtratosController < ApplicationController
 
   def create
     @extrato = Extrato.new extrato_params
-    @extrato.save!
+    @extrato.user_id = current_user.id
+    @extrato.save
+  end
+
+  def balanço
+    @balanco = Extrato.calcular_balanço
   end
 
   private

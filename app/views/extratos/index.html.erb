@@ -1,5 +1,59 @@
-<div class="container">
-  <h1>Listing Extratos</h1>
+<div class="container justify-content mt-2">
+  <h3>Cards</h3>
+  <div class="row">
+    <div class="col">
+      <div class="card border-primary mb-3 h-100">
+        <div class="card-header">Saldo</div>
+        <div class="card-body text-primary">
+          <p class="card-text">R$<%= @user&.saldo&.round(2) %></p>
+        </div>
+      </div>
+      </div>
+
+    <div class="col">
+      <div class="card border-primary mb-3 h-100">
+        <div class="card-header">Balanço</div>
+        <div class="card-body text-primary">
+          <p class="card-text">R$<%= @balanco&.round(2) %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border-success mb-3 h-100">
+        <div class="card-header">Depositar</div>
+        <div class="card-body text-success">
+        <%= form_for @extrato_entrada, url: { action: "create" }, class: "form-control" do |f| %>
+          <div class="form-group">
+            <%= f.text_field :valor, class: "form-control" %>
+            <%= f.hidden_field :tipo_lancamento, value: true %>
+          </div>
+          <%= submit_tag 'Depositar', class: "btn btn-success" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col ">
+      <div class="card border-danger mb-3  h-100">
+        <div class="card-header">Retirar</div>
+        <div class="card-body text-danger">
+        <%= form_for @extrato_retirada, url: { action: "create" }, class: "form-control" do |f| %>
+          <div class="form-group">
+            <%= f.text_field :valor, class: "form-control" %>
+            <%= f.hidden_field :tipo_lancamento, value: false %>
+            </div>
+          <%= submit_tag 'Retirar', class: "btn btn-danger" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-3">
+  <h3>Extrato</h3>
   <table class="table">
     <thead>
       <tr>
@@ -13,10 +67,11 @@
       <% @extratos.each do |extratos| %>
         <tr>
           <td><%= extratos.valor %></td>
-          <td><%= extratos.tipo_lancamento %></td>
-          <td><%= extratos.created_at %></td>
+          <td><%= extratos.tipo_lancamento ? "Entrada" : "Retirada" %></td>
+          <td><%= extratos.created_at.strftime("%d/%m/%Y às %I:%M%p") %></td>
         </tr>
       <% end %>
     </tbody>
+
   </table>
 </div>
