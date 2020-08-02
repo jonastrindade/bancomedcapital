@@ -49,7 +49,7 @@ gem 'devise'
 # console view
 gem 'awesome_print'
 
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2.8'
 gem 'sinatra', :github => 'sinatra/sinatra'
 
 group :development, :test do
