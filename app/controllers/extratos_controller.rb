@@ -19,7 +19,9 @@ class ExtratosController < ApplicationController
   end
 
   def balanco
-    @balanco = Extrato.calcular_balanco current_user
+    # @balanco = Extrato.calcular_balanco current_user
+    ReportWorker.perform_async("02/08/2020", "03/08/2020")
+    @balanco = "REQUEST PARA GERAR UM REPORT"
   end
 
   private
