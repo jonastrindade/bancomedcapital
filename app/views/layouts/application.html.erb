@@ -4,47 +4,20 @@
     <title>Bancomedcapital</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="/extratos">MedCapital</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            Logado como <strong><%= current_user.email %></strong>
-            <%= link_to 'Editar perfil ', edit_user_registration_path, class: "text-dark" %> |
-            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "text-dark"  %>
+          <li class="nav-item active text-light">
+            Logado como <strong class="text-light"><%= current_user.email %></strong>
+            <%= link_to 'Editar perfil ', edit_user_registration_path, class: "text-light" %> |
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "text-light"  %>
           </li>
         <% else %>
           <li class="nav-item">
@@ -54,6 +27,10 @@
         <% end %>
       </div>
     </nav>
+  </head>
+
+  <body>
+  
     
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
@@ -63,5 +40,12 @@
     <% end %>
 
     <%= yield %>
+
+    <script> 
+      function submit() { 
+        /*Put all the data posting code here*/ 
+      document.getElementById("depositar").reset(); 
+      } 
+    </script> 
   </body>
 </html>

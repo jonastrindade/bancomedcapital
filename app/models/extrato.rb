@@ -4,7 +4,7 @@ class Extrato < ApplicationRecord
 
   after_create :somar_saldo
 
-  def self.calcular_balanço user
+  def self.calcular_balanco user
     #soma de extrato.tipo:true - soma de extrato.tipo:false
     entradas = Extrato.where(tipo_lancamento: true, user_id: user.id).sum(:valor)
     saidas = Extrato.where(tipo_lancamento: false, user_id: user.id).sum(:valor)

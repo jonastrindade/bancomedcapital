@@ -1,20 +1,21 @@
 <div class="container justify-content mt-2">
   <h3>Cards</h3>
   <div class="row">
+    
     <div class="col">
-      <div class="card border-primary mb-3 h-100">
+      <div class="card border-primary mb-3 h-100" id="card">
         <div class="card-header">Saldo</div>
         <div class="card-body text-primary">
-          <p class="card-text">R$<%= @user&.saldo&.round(2) %></p>
+          <h3 class="card-title" id="saldo" >R$<%= @user&.saldo&.round(2) %></h3>
         </div>
       </div>
-      </div>
+    </div>
 
     <div class="col">
       <div class="card border-primary mb-3 h-100">
         <div class="card-header">Balanço</div>
         <div class="card-body text-primary">
-          <p class="card-text">R$<%= @balanco&.round(2) %></p>
+          <h3 class="card-title" id="balanco">R$<%= @balanco&.round(2) %></h3>
         </div>
       </div>
     </div>
@@ -25,7 +26,7 @@
         <div class="card-body text-success">
         <%= form_for @extrato_entrada, url: { action: "create" }, remote: true, class: "form-control" do |f| %>
           <div class="form-group">
-            <%= f.text_field :valor, class: "form-control" %>
+            <%= f.number_field :valor, class: "form-control", step: :any, required: true, id: "depositar" %>
             <%= f.hidden_field :tipo_lancamento, value: true %>
           </div>
           <%= submit_tag 'Depositar', class: "btn btn-success" %>
@@ -40,7 +41,7 @@
         <div class="card-body text-danger">
         <%= form_for @extrato_retirada, url: { action: "create" }, remote: true, class: "form-control" do |f| %>
           <div class="form-group">
-            <%= f.text_field :valor, class: "form-control" %>
+            <%= f.number_field :valor, class: "form-control", step: :any, required: true, id: "retirar" %>
             <%= f.hidden_field :tipo_lancamento, value: false %>
             </div>
           <%= submit_tag 'Retirar', class: "btn btn-danger" %>
@@ -52,9 +53,11 @@
   </div>
 </div>
 
+<div id="results"></div>
+
 <div class="container mt-3">
   <h3>Extrato</h3>
-  <table class="table" id="teste">
+  <table class="table" id="table-extrato">
     <thead>
       <tr>
         <th>Valor</th>
@@ -62,10 +65,8 @@
         <th>Data de lançamento</th>
       </tr>
     </thead>
-  
     <tbody>
       <%= render @extratos %>
     </tbody>
-
   </table>
 </div>
