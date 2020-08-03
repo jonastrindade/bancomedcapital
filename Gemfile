@@ -47,6 +47,8 @@ gem 'awesome_print'
 # redis, sidekiq, etc
 gem 'sidekiq', '~> 5.2.8'
 gem 'sinatra', :github => 'sinatra/sinatra'
+#webpack
+gem 'webpacker', '~> 5.x'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

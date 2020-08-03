@@ -6,7 +6,7 @@
       <div class="card border-primary mb-3" id="card">
         <div class="card-header">Saldo</div>
         <div class="card-body text-primary">
-          <h3 class="card-title" id="saldo" >R$<%= @user&.saldo&.round(2) %></h3>
+          <h3 class="card-title" id="saldo" ><%= number_to_currency(@user&.saldo&.round(2)) %></h3>
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <div class="card border-primary mb-3" id="card">
         <div class="card-header">Balanço</div>
         <div class="card-body text-primary">
-          <h3 class="card-title" id="balanco">R$<%= @balanco&.round(2) %></h3>
+          <h3 class="card-title" id="balanco"><%= number_to_currency(@balanco&.round(2))%></h3>
         </div>
       </div>
     </div>
