@@ -16,4 +16,10 @@ class Extrato < ApplicationRecord
     self.user.save!
   end
 
+  def calcular_saldo_extrato user
+    return self.tipo_lancamento ? user.saldo + self.valor : user.saldo - self.valor
+    
+  end
+  
+
 end

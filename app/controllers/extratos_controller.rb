@@ -14,8 +14,13 @@ class ExtratosController < ApplicationController
 
   def create
     @extrato = Extrato.new extrato_params
+    @extrato.saldo_extrato = @extrato.calcular_saldo_extrato current_user
     @extrato.user_id = current_user.id
     @extrato.save
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
   end
 
   def balanco
