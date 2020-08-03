@@ -36,25 +36,25 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # bootstrap
 gem 'bootstrap', '~> 4.5.0'
-
 # jquery
 gem 'jquery-rails'
-
 # postgres
 gem 'pg'
-
 # devise 
 gem 'devise'
-
 # console view
 gem 'awesome_print'
-
+# redis, sidekiq, etc
 gem 'sidekiq', '~> 5.2.8'
 gem 'sinatra', :github => 'sinatra/sinatra'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  
+  # testes
+  gem 'rspec-rails', '~> 4.0.1'
+  gem "factory_bot_rails"
 end
 
 group :development do

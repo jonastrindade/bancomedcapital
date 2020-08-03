@@ -30,22 +30,8 @@
   </head>
 
   <body>
-  
-    
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
 
-    <%= yield %>
+  <%= yield %>
 
-    <script> 
-      function submit() { 
-        /*Put all the data posting code here*/ 
-      document.getElementById("depositar").reset(); 
-      } 
-    </script> 
   </body>
 </html>

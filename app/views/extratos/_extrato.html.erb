@@ -4,5 +4,5 @@
   <td><%= extrato.tipo_lancamento ? "Depósito" : "Retirada" %></td>
   <td><%= extrato.descricao %></td>
   <td><%= extrato.created_at.strftime("%d/%m/%Y às %I:%M%p") %></td>
-  <td>R$<%= extrato.saldo_extrato %></td>
+  <td>R$<%= extrato.saldo_extrato&.round(2) %></td>
 </tr>

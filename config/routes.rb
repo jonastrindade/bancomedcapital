@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :extratos do
     collection do
       get :balanco
+      get :sidekiq_teste
     end
   end
 
