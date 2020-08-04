@@ -2,7 +2,7 @@ class Extrato < ApplicationRecord
   
   belongs_to :user
 
-  after_create :somar_saldo
+  # after_create :somar_saldo
 
   def self.calcular_balanco user
     #soma de extrato.tipo:true - soma de extrato.tipo:false

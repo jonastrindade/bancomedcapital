@@ -1,8 +1,6 @@
 class ExtratosController < ApplicationController
   def index
-    @user = current_user
-    @saldo = current_user.saldo
-    @balanco = Extrato.calcular_balanco current_user
+    @saldo = current_user.saldo&.saldo
     @extrato_entrada = Extrato.new
     @extrato_retirada = Extrato.new
     @extratos = Extrato.all.where(user_id: current_user.id).order(created_at: :desc)
@@ -14,13 +12,18 @@ class ExtratosController < ApplicationController
 
   def create
     @extrato = Extrato.new extrato_params
-    @extrato.saldo_extrato = @extrato.calcular_saldo_extrato current_user
     @extrato.user_id = current_user.id
     @extrato.save
   end
 
   def balanco
     @balanco = Extrato.calcular_balanco current_user
+    render json: @balanco
+  end
+
+  def saldo
+    @saldo = Saldo.where(user_id: current_user.id).saldo
+    render json: @saldo
   end
 
   def sidekiq_teste

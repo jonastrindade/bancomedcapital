@@ -10,15 +10,24 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "output", "heading" ]
+  static targets = [ "heading" ]
 
-  change() {
-    const valor =  this.headingTarget.value 
-    this.headingTarget.innerHTML = "2"
-    console.log("click")
+  // change() {
+  //   this.headingTarget.innerHTML = "2"
+  //   console.log(`${this}`)
+  // }
+
+  // <%= content_tag :div, nil, data: {controller: "extratos"} do %>
+  //   <div class="btn btn-primary" data-action="click->extratos#change" data-target="extratos.heading">3</div>
+  // <% end %>
+
+  load() {
+    fetch('extratos/balanco')
+      .then(response => response.json())
+      .then(json => {
+        this.element.innerHTML = json
+      })
   }
-}
 
-// <%= content_tag :div, nil, data: {controller: "extratos"} do %>
-//   <div class="btn btn-primary" data-action="click->extratos#change" data-target="extratos.heading">3</div>
-// <% end %>
+
+}

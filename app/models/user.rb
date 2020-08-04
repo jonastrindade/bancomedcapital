@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :extratos
+  has_one :saldo
 
   before_create :set_saldo
 
