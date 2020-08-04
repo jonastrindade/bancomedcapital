@@ -8,8 +8,8 @@ class Saldo < ApplicationRecord
   end
 
   def somar_saldo tipo_lancamento, valor
-    return tipo_lancamento ? self.user.saldo.saldo += self.valor : self.user.saldo.saldo -= self.valor 
-    self.user.saldo.save!
+    tipo_lancamento ? self.saldo += valor : self.saldo -= valor 
+    self.save
   end
 
 end

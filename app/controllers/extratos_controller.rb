@@ -22,7 +22,7 @@ class ExtratosController < ApplicationController
   end
 
   def saldo
-    @saldo = Saldo.where(user_id: current_user.id).saldo
+    @saldo = Saldo.find_by(user_id: current_user.id).saldo
     render json: @saldo
   end
 

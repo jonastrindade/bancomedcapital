@@ -5,8 +5,8 @@
     <div class="col">
       <div class="card border-primary mb-3" id="card">
         <div class="card-header">Saldo</div>
-        <div class="card-body text-primary">
-          <h3 class="card-title" id="saldo" ><%= number_to_currency(@saldo) %></h3>
+        <div class="card-body text-primary" data-controller="extratos">
+          <h3 class="card-title" data-target="extratos.saldo" id="depositarr" ><%= number_to_currency(@saldo) %></h3>
         </div>
       </div>
     </div>
@@ -25,11 +25,13 @@
         <div class="card-header">Depositar</div>
         <div class="card-body text-success">
         <%= form_for @extrato_entrada, url: { action: "create" }, remote: true, class: "form-control" do |f| %>
-          <div class="form-group" data-target="extratos.depositar">
+          <div class="form-group">
             <%= f.number_field :valor, class: "form-control", step: :any, required: true, id: "depositar" %>
             <%= f.hidden_field :tipo_lancamento, value: true %>
           </div>
-          <%= submit_tag 'Depositar', class: "btn btn-success" %>
+          <%= content_tag :div, nil, data: {controller: "extratos"} do %>
+            <%= submit_tag 'Depositar', class: "btn btn-success", data: { action: "click->extratos#load" } %>
+          <% end %>
         <% end %>
         </div>
       </div>
@@ -51,13 +53,6 @@
     </div>
 
   </div>
-</div>
-
-
-<div class="d-flex justify-content-center">
-  <%= content_tag :div, nil, data: {controller: "extratos"} do %>
-    <button data-action="click->extratos#load">Fetch!</button>
-  <% end %>
 </div>
 
 <div class="container mt-3">
