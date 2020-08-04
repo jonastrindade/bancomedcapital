@@ -12,6 +12,6 @@ class Extrato < ApplicationRecord
   end
 
   def somar_saldo
-    self.user.saldo.somar_saldo self.tipo_lancamento, self.valor
+    self.user.saldo.somar_saldo(self.tipo_lancamento, self.valor)
   end
 end
