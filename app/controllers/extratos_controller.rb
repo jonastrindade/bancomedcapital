@@ -1,6 +1,6 @@
 class ExtratosController < ApplicationController
   def index
-    @saldo = current_user.saldo&.saldo
+    # @saldo = current_user.saldo&.saldo
     @extrato_entrada = Extrato.new
     @extrato_retirada = Extrato.new
     @extratos = Extrato.all.where(user_id: current_user.id).order(created_at: :desc)
