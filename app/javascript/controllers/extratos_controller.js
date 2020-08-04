@@ -26,8 +26,13 @@ export default class extends Controller {
       .then(response => response.json())
       .then(json => {
         const saldo = document.getElementById('depositarr')
-        saldo.innerHTML = `R$${json}`
+        saldo.innerHTML = `$${json}`
+        const balanco = document.getElementById('balancoo')
+        balanco.innerHTML = `$${json}`
+        const saldoTabela = document.getElementById('saldoTabela')
+        saldoTabela.innerHTML = `$${json}`
       })
+
   }
 
 

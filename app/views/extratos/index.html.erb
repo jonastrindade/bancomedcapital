@@ -6,7 +6,7 @@
       <div class="card border-primary mb-3" id="card">
         <div class="card-header">Saldo</div>
         <div class="card-body text-primary" data-controller="extratos">
-          <h3 class="card-title" data-target="extratos.saldo" id="depositarr" ><%= number_to_currency(@saldo) %></h3>
+          <h3 class="card-title" id="depositarr" ><%= number_to_currency(@saldo) %></h3>
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <div class="card border-primary mb-3" id="card">
         <div class="card-header">Balanço</div>
         <div class="card-body text-primary">
-          <h3 class="card-title" id="balanco"><%= number_to_currency(@saldo) %></h3>
+          <h3 class="card-title" id="balancoo"><%= number_to_currency(@saldo) %></h3>
         </div>
       </div>
     </div>
@@ -45,8 +45,10 @@
           <div class="form-group">
             <%= f.number_field :valor, class: "form-control", step: :any, required: true, id: "retirar" %>
             <%= f.hidden_field :tipo_lancamento, value: false %>
-            </div>
-          <%= submit_tag 'Retirar', class: "btn btn-danger" %>
+          </div>
+          <%= content_tag :div, nil, data: {controller: "extratos"} do %>
+            <%= submit_tag 'Retirar', class: "btn btn-danger", data: { action: "click->extratos#load" } %>
+          <% end %>
         <% end %>
         </div>
       </div>
