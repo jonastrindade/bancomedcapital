@@ -8,10 +8,4 @@ class User < ApplicationRecord
   has_many :extratos
   has_one :saldo
 
-  before_create :set_saldo
-
-  def set_saldo
-    self.saldo = 0.0
-  end
-
 end
