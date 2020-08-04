@@ -25,7 +25,7 @@
         <div class="card-header">Depositar</div>
         <div class="card-body text-success">
         <%= form_for @extrato_entrada, url: { action: "create" }, remote: true, class: "form-control" do |f| %>
-          <div class="form-group">
+          <div class="form-group" data-target="extratos.depositar">
             <%= f.number_field :valor, class: "form-control", step: :any, required: true, id: "depositar" %>
             <%= f.hidden_field :tipo_lancamento, value: true %>
           </div>
@@ -53,15 +53,12 @@
   </div>
 </div>
 
-<%
-=begin%>
- <div class="d-flex justify-content-center">
-<%= content_tag :div, nil, data: {controller: "extratos"} do %>
-  <button data-action="click->extratos#load" data-target="extratos.heading">Fetch!</button>
-<% end %>
-</div> 
-<%
-=end%>
+
+<div class="d-flex justify-content-center">
+  <%= content_tag :div, nil, data: {controller: "extratos"} do %>
+    <button data-action="click->extratos#load">Fetch!</button>
+  <% end %>
+</div>
 
 <div class="container mt-3">
   <h3>Extrato</h3>

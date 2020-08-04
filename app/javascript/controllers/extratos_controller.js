@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "heading" ]
+  static targets = [ "heading", "depositar" ]
 
   // change() {
   //   this.headingTarget.innerHTML = "2"
@@ -25,7 +25,7 @@ export default class extends Controller {
     fetch('extratos/balanco')
       .then(response => response.json())
       .then(json => {
-        this.element.innerHTML = json
+        this.depositarTarget.innerHTML = json
       })
   }
 
