@@ -45,7 +45,7 @@ gem 'devise'
 # console view
 gem 'awesome_print'
 # redis, sidekiq, etc
-gem 'sidekiq', '~> 5.2.8'
+gem 'sidekiq', '~> 6.4.0'
 gem 'sinatra', :github => 'sinatra/sinatra'
 #webpack
 gem 'webpacker', '~> 5.x'
